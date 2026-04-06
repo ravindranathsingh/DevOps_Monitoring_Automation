@@ -30,7 +30,7 @@ website/ → Sample deployed website
 
 ---
 
-##Features
+## Features
 
 Service Monitoring (Nginx)
 CPU, Memory, Disk Health Checks
@@ -74,7 +74,7 @@ Log cleanup → Daily
 
 ---
 
-##How to Run
+## How to Run
 
 Clone the repository:
 
@@ -115,6 +115,6 @@ This project demonstrates:
 
 ---
 
-##Author
+## Author
 
 Ravindranath Singh
