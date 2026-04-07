@@ -17,6 +17,6 @@ TIMESTAMP=$(date +%y-%m-%d_%H-%M-%S)
 
 echo "===== BACKUP STARTED $TIMESTAMP =====" >> $LOGFILE
 
-tar -czvf $BACKUP_DIR/website_backup_$TIMESTAMP.tar.gz -C $PROJECT_DIR $SOURCE_DIR
+tar -czvf $BACKUP_DIR/website_backup_$TIMESTAMP.tar.gz -C $PROJECT_DIR/$SOURCE_DIR .
 
 echo "===== Backup Completed at $TIMESTAMP =====" >> $LOGFILE
