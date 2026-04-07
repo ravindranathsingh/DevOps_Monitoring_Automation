@@ -1,27 +1,33 @@
 #!/bin/bash
 
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
 LOGFILE=/home/vagrant/DevOps/phase1-monitoring-project/logs
 ALERTFILE=$LOGFILE/alerts.log
 
-echo "====================================="
+echo -e "${BLUE}====================================="
 echo "     SYSTEM MONITORING DASHBOARD	   "
-echo "====================================="
+echo -e "=====================================${NC}"
 
 echo ""
 echo "DATE: $(date)"
 
 echo ""
-echo "----- Service Status -----"
+echo -e "${YELLOW}----- Service Status -----${NC}"
 
 if systemctl is-active --quiet nginx
 then
-	echo "Nginx status: RUNNING"
+	echo -e "Nginx status: ${GREEN}RUNNING${NC}"
 else
-	echo "Nginx status: STOPPED"
+	echo -e "Nginx status: ${RED}STOPPED${NC}"
 fi
 
 echo ""
-echo "----- System Health -----"
+echo -e "${YELLOW}----- System Health -----${NC}"
 
 CPU=$(top -bn1 | grep "Cpu(s)" | awk '{print $2 + $4}')
 MEM=$(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }')
@@ -32,11 +38,16 @@ echo "Memory Usage: $MEM"
 echo "Disk Usage: $DISK"
 
 echo ""
-echo "----- Alert Summary -----"
+echo -e "${YELLOW}----- Alert Summary -----${NC}"
 
 CRITICAL_COUNT=$(grep "CRITICAL" $ALERTFILE | wc -l)
 
-echo "Total Critical Alerts: $CRITICAL_COUNT"
+if [ "$CRITICAL_COUNT" -gt 0 ]
+then
+	echo -e "Total Critical Alerts: ${RED}$CRITICAL_COUNT${NC}"
+else
+	echo -e "Total Critical Alerts: ${GREEN}$CRITICAL_COUNT${NC}"
+fi
 
 echo ""
 echo "====================================="
