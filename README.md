@@ -30,6 +30,25 @@ website/ → Sample deployed website
 
 ---
 
+## Architecture Diagram
+
+User
+   │
+   ▼
+Cron Scheduler
+   │
+   ▼
+Monitoring Scripts
+(service-check, health-check, alerts)
+   │
+   ▼
+Log Files Generated
+   │
+   ▼
+Dashboard & Reports
+
+---
+
 ## Features
 
 Service Monitoring (Nginx)
@@ -58,7 +77,11 @@ Cron-based Automation
 - cleanup-logs.sh → Deletes old logs
 - dashboard.sh → Displays monitoring dashboard
 - deploy-site.sh → Deploys sample website
-- backup.sh → Creates backups
+- backup.sh → Creates compressed backup of website files.
+- system-report.sh → Generates periodic system reports
+- alerts-history.sh → Tracks alert history
+- weekly-report.sh → Generates weekly reports
+- restore-backup.sh → Restores latest backup
 
 ---
 
@@ -99,6 +122,24 @@ Displays:
 - Memory Usage
 - Disk Usage
 - Critical Alerts Count
+
+---
+
+## Reporting System
+
+The project generates system reports automatically.
+
+system-report.sh → Generates system status reports periodically.
+
+alerts-history.sh → Tracks alert counts and history.
+
+weekly-report.sh → Generates weekly monitoring summary.
+
+Reports are stored inside:
+
+logs/system-report.log
+logs/alerts-history.log 
+logs/weekly-report.log
 
 ---
 
