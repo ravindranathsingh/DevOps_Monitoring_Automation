@@ -1,4 +1,4 @@
-# DevOps Monitoring Automation Project
+# Monitoring Automation Project
 
 ## Project Overview
 
